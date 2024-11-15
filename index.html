@@ -3,54 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Code Editor</title>
-    <!-- CodeMirror CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/eclipse.min.css">
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="style.css">
+    <title>Tetris</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            margin: 0;
+        }
+        
+        .game-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .score-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin-right: 20px;
+        }
+
+        .viewing-windows {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        #preview, #held {
+            margin-top: 5px;
+            width: 120px;
+            height: 80px;
+            border: 1px solid white;
+        }
+
+        #tetris {
+            border: 2px solid white;
+        }
+
+        canvas {
+            border: 1px solid white;
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-      <h1>Advanced Code Editor</h1>
-      <div class="controls">
-          <button onclick="runCode()">Run</button>
-          <button onclick="saveCode()">Save</button>
-          <button onclick="loadCode()">Load</button>
-          <button onclick="exportCode()">Export</button>
-          <select id="themeSelector" onchange="changeTheme()">
-              <option value="default">Default</option>
-              <option value="dracula">Dark</option>
-              <option value="eclipse">Light</option>
-          </select>
-          <button id="fullscreenButton" onclick="togglePreviewFullscreen()">Fullscreen Preview</button>
-      </div>
-  </header>
+    <div class="game-container">
+        <div class="score-container">
+            <div class="viewing-windows">
+                <canvas id="preview"></canvas>
+                <canvas id="held"></canvas>
+            </div>
+        </div>
+        <canvas id="tetris"></canvas>
+    </div>
 
-  <main>
-      <div class="tabs">
-          <div class="tab active" data-editor="htmlEditor">HTML</div>
-          <div class="tab" data-editor="cssEditor">CSS</div>
-          <div class="tab" data-editor="jsEditor">JavaScript</div>
-      </div>
-      <div class="editor-container">
-          <textarea id="htmlEditor"></textarea>
-          <textarea id="cssEditor" style="display: none;"></textarea>
-          <textarea id="jsEditor" style="display: none;"></textarea>
-      </div>
-      <!-- Preview will be opened in a new tab -->
-      <iframe id="sandbox" style="display:none;"></iframe>
-  </main>
-
-  <!-- CodeMirror JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/css/css.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/xml/xml.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/lint/lint.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/closebrackets.min.js"></script>
-  <!-- Custom Scripts -->
-  <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>
