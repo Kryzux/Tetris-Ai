@@ -1,0 +1,113 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+#tetris {
+  border: 2px solid #333; /* Lighter border for better visibility */
+  background-color: #000000; /* Dark background for the game board */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  grid-template-rows: repeat(20, 30px);
+  gap: 1px;
+  border: 2px solid #333; /* Slightly thicker border for the grid */
+  background-color: #000; /* Keep the black background for the game */
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  background-color: #222; /* Default background for empty cells */
+  border: 1px solid #333;
+  box-sizing: border-box;
+}
+
+/* Textures for the Tetris blocks */
+.texture-1 {
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%) 0 0,
+                linear-gradient(45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%) 50% 50%;
+    background-size: 10px 10px;
+    background-color: #ff3b30; /* Red color for T-block */
+}
+
+.texture-2 {
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%) 0 0,
+                linear-gradient(45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%) 50% 50%;
+    background-size: 10px 10px;
+    background-color: #ffcc00; /* Yellow color for L-block */
+}
+
+.texture-3 {
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%) 0 0,
+                linear-gradient(45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%) 50% 50%;
+    background-size: 10px 10px;
+    background-color: #4caf50; /* Green color for Z-block */
+}
+
+.texture-4 {
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%) 0 0,
+                linear-gradient(45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%) 50% 50%;
+    background-size: 10px 10px;
+    background-color: #2196f3; /* Blue color for S-block */
+}
+
+/* More textures can be added here for other pieces if necessary */
+.game-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.score {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.next-piece {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.game-over {
+  color: red;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.clear-animation {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
