@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('tetris');
   const context = canvas.getContext('2d');
@@ -6,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const heldCanvas = document.getElementById('held');
   const heldContext = heldCanvas.getContext('2d');
 
+  const audio = new Audio('ha.mp3');
+  audio.loop = true; // Enable looping if the audio should play continuously
+
+
+  
   const rows = 21;
   const cols = 10;
   const blockSize = 30;
@@ -111,7 +117,20 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keyup', (event) => {
       if (event.key === 'ArrowDown') dropSpeed = 500;
   });
+  document.addEventListener('keydown', (event) => {
+      if (event.key === 'p') {
+          if (audio.paused) {
+              audio.play().catch(err => console.error("Audio playback failed: ", err));
+          } else {
+              audio.pause();
+          }
+      }
+  });
 
+
+
+
+  
     //draw the screen & stuff
   function drawScore() {
       context.fillStyle = 'white';
@@ -550,7 +569,13 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(gameLoop);  // Start the game loop
   }
 
+  function playSound() {
+      if (audio.paused) {
+          audio.play().catch(err => console.error("Audio playback failed: ", err));
+      }
+  }
 
+  
 function gameLoop(timestamp) {
   if (isGameOver) {
       endGame();  // Call the endGame function when the game is over
@@ -573,7 +598,7 @@ function gameLoop(timestamp) {
       movePiece(0, 1);
       lastTime = timestamp;
   }
-
+  playSound("audio (2).mp3");
   drawBoard();
   drawPreview();
   drawHeld();
@@ -582,10 +607,6 @@ function gameLoop(timestamp) {
   requestAnimationFrame(gameLoop);
 }
 
-
+   
   requestAnimationFrame(gameLoop);
 });
-
-
-
-
